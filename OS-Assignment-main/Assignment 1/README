@@ -1,0 +1,63 @@
+This is Assignment of OS .
+
+GROUP - 117
+
+Overview of the code :
+        1. Global Variables:
+        ➔ Elf32_Ehdr *ehdr`: Pointer to the ELF header.
+        ➔ Elf32_Phdr *phdr`: Pointer to the program header.
+        ➔ int fd`: File descriptor for the ELF binary.
+        ➔ char *virtual_mem`: Memory where the ELF segment is loaded.
+        ➔ size_t sizeStored`: Size of the loaded segment.
+2. Helper Functions:
+        ➔ opening_file()`: Opens the ELF file.
+        ➔ readingAndAllocatingELFHeader()`: Reads and allocates memory for the ELF
+        header.
+        ➔ going_to_phdr()`: Moves the file pointer to the program header table.
+        ➔ allocate_and_read_phdr()`: Allocates memory and reads the program header.
+        ➔ verify_phdr()`: Verifies the program header to check if it's the right segment to load.
+        ➔ allocatingVirtualMemory()`: Allocates virtual memory for the segment.
+        ➔ readContentTOMemory()`: Reads the segment content into memory.
+        ➔ executionOfStartMethod()`: Executes the `_start` method of the loaded program.
+        ➔ freePHDR()`: Frees the allocated program header memory.
+        ➔ findPT_LOAD()`: Searches for the PT_LOAD segment.
+3. Main Loading and Execution Logic:
+        ➔ load_and_run_elf()`: This function orchestrates the entire process of loading and
+        executing the ELF binary. It reads the ELF header, locates the PT_LOAD segment, loads
+        it into memory, and then jumps to the entry point to execute the binary.
+4. Cleanup:
+        ➔ loader_cleanup()`: Releases memory and performs cleanup operations after the
+        execution is complete.
+5. Main Function:
+        ➔ main()`: Validates the command-line argument, then calls `load_and_run_elf()` to load
+        and execute the provided ELF binary. It also invokes the cleanup routine.
+Flow:
+        1. The program starts by ensuring the user has provided an ELF binary as an argument.
+        2. It then reads the ELF header and navigates to the program header table.
+        3. The program searches for the PT_LOAD segment.
+        4. Once the PT_LOAD segment is found, it is loaded into memory.
+        5. The program then jumps to the entry point and begins execution.
+        6. After execution, it cleans up any resources it used.
+        Contribution Report for ELF LOADER
+
+# TO RUN THE FILE : 
+1) make
+2) cd bin
+3) ./launch ../test/fib
+
+#  Contributions:
+      1. Anish:
+            ● Contribution Percentage: 50%
+      Details:
+            ➔ Made a basic structure of the code, laying down the logic and components.
+            ➔ Focused on the code implementation, from defining global variables to drifting the initial
+              versions of the primary functions.
+      2. Arav:
+          ● Contribution Percentage: 50%
+      Details:
+            ➔ Worked intensively on error analysis.
+            ➔ Dedicated efforts towards the optimization of the code, making it efficient, and more user
+            friendly.
+Final Breakdown:
+        ● Anish: 50%
+        ● Arav: 50%
